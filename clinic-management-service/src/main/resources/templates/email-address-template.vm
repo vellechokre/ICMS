@@ -1,0 +1,18 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+    <p>Dear ${firstName} ${lastName},</p>
+ 
+   
+   <a href="https://www.google.com/maps/place/Dev+Dental+Clinic/@23.07107,72.5465493,17z/data=!3m1!4b1!4m13!1m7!3m6!1s0x395e836fc021cdcb:0xbcb12cb18d4c5687!2s176,+Sardar+Vallabhbhai+Patel+Rd,+Madhuvrund+Society,+Nirnay+Nagar,+Ahmedabad,+Gujarat+380061!3b1!8m2!3d23.073538!4d72.5545716!3m4!1s0x395e836618d3e8a5:0x7ea3c00c5a2c2961!8m2!3d23.07107!4d72.548738">176, Sardar Vallabhbhai Patel Rd, k.K.Nagar, Ghatlodiya, Nirnay Nagar, Ahmedabad, Gujarat 360061</a>
+   <img src="templates/icon.jpg" alt="Address" >
+    <p>Thanks</p>
+    <p>Dev Dental Clinic</p>
+    <p>Dr. Parth Patel</p>
+     <p>+91-9979850990</p>
+      <p>devdentalclinic@yahoo.com</p>
+</body>
+ 
+</html>

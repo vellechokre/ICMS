@@ -1,0 +1,18 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+    <p>Dear ${firstName} ${lastName},</p><br>
+    <p><b>"Our lifetime goal is your lifetime smile. "<b></p><br>
+    <p> May we extend our sincere thanks for the opportunity to meet your dental health needs.</P>
+    <p> We look forward to a continued relationship with you.</p><br>
+    <p> Welcome to our practice.
+    <p>Thanks</p>
+    <p>Dev Dental Clinic</p>
+    <p>Dr. Parth Patel</p>
+     <p>+91-9979850990</p>
+      <p>devdentalclinic@yahoo.com</p>
+</body>
+ 
+</html>

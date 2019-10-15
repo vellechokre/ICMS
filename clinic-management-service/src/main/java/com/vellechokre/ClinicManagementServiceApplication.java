@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,8 @@ import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
 
 import com.vellechokre.config.SecurityAuditorAware;
+import com.vellechokre.security.JwtTokenUtil;
+import com.vellechokre.security.JwtUserDetailsService;
 
 /**
  * Project clinic-management-service
@@ -32,8 +35,14 @@ import com.vellechokre.config.SecurityAuditorAware;
 @SpringBootApplication
 public class ClinicManagementServiceApplication {
 
-    private static final Logger log =
+    private static final Logger logger =
             LoggerFactory.getLogger(ClinicManagementServiceApplication.class);
+
+    @Autowired
+    private JwtUserDetailsService jwtUserDetailsService;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     public static void main(String[] args) {
 
@@ -67,7 +76,7 @@ public class ClinicManagementServiceApplication {
                 long time = System.currentTimeMillis();
                 chain.doFilter(req, res);
                 time = System.currentTimeMillis() - time;
-                log.debug("Time taken by method {}: {} ms ",
+                logger.debug("Time taken by method {}: {} ms ",
                         ((HttpServletRequest) req).getRequestURI(), time);
             }
 
@@ -87,5 +96,9 @@ public class ClinicManagementServiceApplication {
     public DateTimeProvider dateTimeProvider() {
 
         return CurrentDateTimeProvider.INSTANCE;
+    }
+
+    private void test() {
+
     }
 }

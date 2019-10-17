@@ -4,15 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 import com.vellechokre.json.CustomDateDeserializer;
 import com.vellechokre.json.CustomDateSerializer;
 
@@ -23,21 +20,16 @@ import com.vellechokre.json.CustomDateSerializer;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.APPOINTMENT_DETAIL_T)
-public class AppointmentDetail extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "appointment_id")
-    private Integer id;
+@Entity(name = EntityContant.APPOINTMENT)
+public class Appointment extends BaseObjectWithIdAndBranchId {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private PatientDetail patient;
+    private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "consultant_id")
-    private ConsultantDetail consultant;
+    private Consultant consultant;
 
     @Column(name = "appointment_start_date")
     @JsonDeserialize(using = CustomDateDeserializer.class)
@@ -56,25 +48,9 @@ public class AppointmentDetail extends BaseObject {
     private boolean sameDayReminder;
 
     /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
-
-    /**
      * @return the patient
      */
-    public PatientDetail getPatient() {
+    public Patient getPatient() {
 
         return patient;
     }
@@ -82,7 +58,7 @@ public class AppointmentDetail extends BaseObject {
     /**
      * @param patient the patient to set
      */
-    public void setPatient(final PatientDetail patient) {
+    public void setPatient(final Patient patient) {
 
         this.patient = patient;
     }
@@ -90,7 +66,7 @@ public class AppointmentDetail extends BaseObject {
     /**
      * @return the consultant
      */
-    public ConsultantDetail getConsultant() {
+    public Consultant getConsultant() {
 
         return consultant;
     }
@@ -98,7 +74,7 @@ public class AppointmentDetail extends BaseObject {
     /**
      * @param consultant the consultant to set
      */
-    public void setConsultant(final ConsultantDetail consultant) {
+    public void setConsultant(final Consultant consultant) {
 
         this.consultant = consultant;
     }

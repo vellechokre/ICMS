@@ -2,7 +2,7 @@ package com.vellechokre.util;
 
 /**
  * Project clinic-management-service
- * 
+ *
  * @author nishant.bhardwaz
  * @version 1.0
  * @date Sep 2, 2019
@@ -37,4 +37,6 @@ public abstract class ApplicationConstant {
             "Gental reminder that you have appointment with DevDental today at-";
 
     public final static String BIRTHDAY_WISH_SMS = "dev dental clinic wishes you happy birthday";
+
+    public final static String DATA_FETCH_SUCCESS = "Data fetched successfully.";
 }

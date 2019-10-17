@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.vellechokre.bo.RecordVisit;
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.entity.PaymentDetails;
-import com.vellechokre.entity.VisitDetails;
-import com.vellechokre.repository.PatientDetailRepo;
-import com.vellechokre.repository.PaymentDetailsRepo;
-import com.vellechokre.repository.VisitDetailsRepo;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.entity.Payment;
+import com.vellechokre.entity.Visit;
+import com.vellechokre.repository.PatientRepo;
+import com.vellechokre.repository.PaymentRepo;
+import com.vellechokre.repository.VisitRepo;
 import com.vellechokre.services.VisitService;
 
 /**
@@ -26,13 +26,13 @@ import com.vellechokre.services.VisitService;
 public class VisitServiceImpl implements VisitService {
 
     @Autowired
-    private VisitDetailsRepo visitRepo;
+    private VisitRepo visitRepo;
 
     @Autowired
-    private PaymentDetailsRepo paymentRepo;
+    private PaymentRepo paymentRepo;
 
     @Autowired
-    private PatientDetailRepo patientRepo;
+    private PatientRepo patientRepo;
 
     @Override
     public void recordVisit(RecordVisit recordVisit) {
@@ -46,15 +46,15 @@ public class VisitServiceImpl implements VisitService {
         Integer netAmount = Integer.valueOf(0);
         Integer amountPaid = Integer.valueOf(0);
         Integer pendingAmount = Integer.valueOf(0);
-        final PatientDetail patientDetail = recordVisit.getPatientDetail();
-        final List<VisitDetails> visits = visitRepo.findByPatient(patientDetail);
-        for (final VisitDetails visit : visits) {
+        final Patient patientDetail = recordVisit.getPatientDetail();
+        final List<Visit> visits = visitRepo.findByPatient(patientDetail);
+        for (final Visit visit : visits) {
             System.out.println(visit.getNetAmount());
             netAmount = netAmount + visit.getNetAmount();
         }
         System.out.println("==================");
-        final List<PaymentDetails> payments = paymentRepo.findByPatient(patientDetail);
-        for (final PaymentDetails payment : payments) {
+        final List<Payment> payments = paymentRepo.findByPatient(patientDetail);
+        for (final Payment payment : payments) {
             System.out.println(payment.getAmountPaid());
             amountPaid = amountPaid + payment.getAmountPaid();
         }

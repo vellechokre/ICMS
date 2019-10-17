@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vellechokre.entity.DAOUser;
+
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
@@ -37,7 +39,7 @@ public class JwtAuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+    public ResponseEntity<?> saveUser(@RequestBody DAOUser user) throws Exception {
 
         return ResponseEntity.ok(userDetailsService.save(user));
     }

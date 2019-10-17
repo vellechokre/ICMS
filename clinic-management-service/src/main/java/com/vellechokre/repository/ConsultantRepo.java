@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.vellechokre.entity.ConsultantDetail;
+import com.vellechokre.entity.Consultant;
 
 /**
  * Project clinic-management-service
@@ -15,8 +15,8 @@ import com.vellechokre.entity.ConsultantDetail;
  * @version 1.0
  * @date Sep 2, 2019
  */
-public interface ConsultantDetailsRepo extends JpaRepository<ConsultantDetail, Integer> {
+public interface ConsultantRepo extends JpaRepository<Consultant, Integer> {
 
     @RequestMapping(value = "findByName")
-    List<ConsultantDetail> findByName(@Param(value = "name") String name);
+    List<Consultant> findByName(@Param(value = "name") String name);
 }

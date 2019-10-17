@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 
 /**
  * Project clinic-management-service
@@ -17,16 +17,16 @@ import com.vellechokre.entity.PatientDetail;
  * @version 1.0
  * @date Sep 2, 2019
  */
-public interface PatientDetailRepo extends JpaRepository<PatientDetail, Integer> {
+public interface PatientRepo extends JpaRepository<Patient, Integer> {
 
-    List<PatientDetail> findByFirstname(String firstname);
+    List<Patient> findByFirstname(String firstname);
 
     @Override
     @RestResource(path = "byId")
-    Optional<PatientDetail> findById(@Param("id") Integer id);
+    Optional<Patient> findById(@Param("id") Integer id);
 
     @RestResource(path = "byPendingAmount")
-    List<PatientDetail> findByPendingAmountGreaterThan(@Param("amount") Integer amount);
+    List<Patient> findByPendingAmountGreaterThan(@Param("amount") Integer amount);
 
-    List<PatientDetail> findByIsActiveTrueAndDobBetween(Date startDate, Date nextDate);
+    List<Patient> findByIsActiveTrueAndDobBetween(Date startDate, Date nextDate);
 }

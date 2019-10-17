@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.vellechokre.entity.AppointmentDetail;
+import com.vellechokre.entity.Appointment;
 
 /**
  * Project clinic-management-service
@@ -14,11 +14,11 @@ import com.vellechokre.entity.AppointmentDetail;
  * @version 1.0
  * @date Sep 2, 2019
  */
-public interface AppointmentDetailsRepo extends JpaRepository<AppointmentDetail, Integer> {
+public interface AppointmentRepo extends JpaRepository<Appointment, Integer> {
 
-    AppointmentDetail findByPatientIdAndIsActiveTrue(Integer patientId);
+    Appointment findByPatientIdAndIsActiveTrue(Integer patientId);
 
     // List<AppointmentDetail> findAllIsActiveTrue();
-    List<AppointmentDetail> findByIsActiveTrueAndAppointmentStartDateBetween(Date startDate,
+    List<Appointment> findByIsActiveTrueAndAppointmentStartDateBetween(Date startDate,
                                                                              Date nextDate);
 }

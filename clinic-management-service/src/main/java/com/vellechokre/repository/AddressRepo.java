@@ -2,7 +2,7 @@ package com.vellechokre.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.vellechokre.entity.AddressDetails;
+import com.vellechokre.entity.Address;
 
 /**
  * Project clinic-management-service
@@ -11,7 +11,7 @@ import com.vellechokre.entity.AddressDetails;
  * @version 1.0
  * @date Sep 2, 2019
  */
-public interface AddressDetailsRepo extends JpaRepository<AddressDetails, Integer> {
+public interface AddressRepo extends JpaRepository<Address, Integer> {
 
-    AddressDetails findByPatientId(Integer patientId);
+    Address findByPatientId(Integer patientId);
 }

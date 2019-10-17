@@ -12,12 +12,12 @@ import org.springframework.util.StringUtils;
 import com.vellechokre.bo.ErrorResponse;
 import com.vellechokre.bo.PatientData;
 import com.vellechokre.bo.SuccessResponse;
-import com.vellechokre.entity.AddressDetails;
-import com.vellechokre.entity.AppointmentDetail;
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.repository.AddressDetailsRepo;
-import com.vellechokre.repository.AppointmentDetailsRepo;
-import com.vellechokre.repository.PatientDetailRepo;
+import com.vellechokre.entity.Address;
+import com.vellechokre.entity.Appointment;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.repository.AddressRepo;
+import com.vellechokre.repository.AppointmentRepo;
+import com.vellechokre.repository.PatientRepo;
 import com.vellechokre.services.MailService;
 import com.vellechokre.services.PatientService;
 import com.vellechokre.util.ApplicationConstant;
@@ -35,24 +35,24 @@ import com.vellechokre.util.SmsUtil;
 public class PatientServiceImpl implements PatientService {
 
     @Autowired
-    private PatientDetailRepo patientRepo;
+    private PatientRepo patientRepo;
 
     @Autowired
-    private AddressDetailsRepo addressRepo;
+    private AddressRepo addressRepo;
 
     @Autowired
     private MailService mailService;
 
     @Autowired
-    private AppointmentDetailsRepo appointmentRepo;
+    private AppointmentRepo appointmentRepo;
 
     @Override
     public ResponseEntity createPatient(PatientData patientData) {
 
         final String response = validateSave(patientData);
         if (response.equals("SUCCESS")) {
-            final PatientDetail patientDetail = patientRepo.save(patientData.getPatientDetail());
-            final AddressDetails addressDetail = patientData.getAddressDetail();
+            final Patient patientDetail = patientRepo.save(patientData.getPatientDetail());
+            final Address addressDetail = patientData.getAddressDetail();
             if (null != addressDetail) {
                 addressDetail.setPatient(patientDetail);
                 addressRepo.save(addressDetail);
@@ -112,15 +112,15 @@ public class PatientServiceImpl implements PatientService {
 
         final String response = validateSave(patientData);
         if (response.equals("SUCCESS")) {
-            final PatientDetail patientDetail = patientData.getPatientDetail();
-            final PatientDetail patientDetailUpdated = patientRepo.save(patientDetail);
-            final AppointmentDetail appointmentDetail = patientData.getAppointmentDetail();
+            final Patient patientDetail = patientData.getPatientDetail();
+            final Patient patientDetailUpdated = patientRepo.save(patientDetail);
+            final Appointment appointmentDetail = patientData.getAppointmentDetail();
             if (null != appointmentDetail) {
                 appointmentDetail.setPatient(patientDetailUpdated);
                 appointmentRepo.save(appointmentDetail);
             }
-            final AddressDetails addressDetail = patientData.getAddressDetail();
-            final AddressDetails address =
+            final Address addressDetail = patientData.getAddressDetail();
+            final Address address =
                     addressRepo.findByPatientId(patientDetailUpdated.getId());
             if (null != addressDetail) {
                 if (null != address) {

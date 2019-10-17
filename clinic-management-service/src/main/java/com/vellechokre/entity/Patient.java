@@ -4,13 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 import com.vellechokre.json.CustomDateDeserializer;
 import com.vellechokre.json.CustomDateSerializer;
 
@@ -21,13 +18,8 @@ import com.vellechokre.json.CustomDateSerializer;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.PATIENT_DETAIL_T)
-public class PatientDetail extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "patient_id")
-    private Integer id;
+@Entity(name = EntityContant.PATIENT)
+public class Patient extends BaseObjectWithIdAndBranchId {
 
     @Column(name = "first_name")
     private String firstname;
@@ -69,22 +61,6 @@ public class PatientDetail extends BaseObject {
     private Integer totalAmount;
 
     private Integer pendingAmount;
-
-    /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
 
     /**
      * @return the firstname

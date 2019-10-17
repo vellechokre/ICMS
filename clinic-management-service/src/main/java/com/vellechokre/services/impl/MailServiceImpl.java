@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.vellechokre.bo.Mail;
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 import com.vellechokre.services.MailService;
 
 /**
@@ -92,7 +92,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public Mail composeMail(final PatientDetail patientDetail) {
+    public Mail composeMail(final Patient patientDetail) {
 
         final Mail mail = new Mail();
         mail.setMailFrom("devdentalclinic@yahoo.com");

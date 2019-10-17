@@ -2,11 +2,8 @@ package com.vellechokre.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 
 /**
  * Project clinic-management-service
@@ -15,13 +12,8 @@ import com.vellechokre.entity.base.BaseObject;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.CONSULTANT_DETAIL_T)
-public class ConsultantDetail extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "consultant_id")
-    private Integer id;
+@Entity(name = EntityContant.CONSULTANT)
+public class Consultant extends BaseObjectWithIdAndBranchId {
 
     @Column(name = "name")
     private String name;
@@ -31,22 +23,6 @@ public class ConsultantDetail extends BaseObject {
 
     @Column(name = "email_id")
     private String emailId;
-
-    /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
 
     /**
      * @return the name

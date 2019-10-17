@@ -1,11 +1,8 @@
 package com.vellechokre.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 
 /**
  * Project clinic-management-service
@@ -15,11 +12,7 @@ import com.vellechokre.entity.base.BaseObject;
  * @date Sep 2, 2019
  */
 @Entity(name = EntityContant.EMAIL_DETAIL_T)
-public class EmailDetails extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class EmailDetails extends BaseObjectWithIdAndBranchId {
 
     private String host;
 
@@ -28,22 +21,6 @@ public class EmailDetails extends BaseObject {
     private String username;
 
     private String password;
-
-    /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
 
     /**
      * @return the host

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vellechokre.bo.PatientData;
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.repository.PatientDetailRepo;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.repository.PatientRepo;
 import com.vellechokre.services.PatientService;
 
 /**
@@ -32,7 +32,7 @@ import com.vellechokre.services.PatientService;
 public class PatientController {
 
     @Autowired
-    private PatientDetailRepo patientRepo;
+    private PatientRepo patientRepo;
 
     @Autowired
     private PatientService service;
@@ -52,16 +52,16 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/getPatientByName", method = RequestMethod.GET)
-    public @ResponseBody List<PatientDetail> getPatientByName(@RequestParam final String firstName) {
+    public @ResponseBody List<Patient> getPatientByName(@RequestParam final String firstName) {
 
         return simulateSearchResult(firstName);
     }
 
-    private List<PatientDetail> simulateSearchResult(final String name) {
+    private List<Patient> simulateSearchResult(final String name) {
 
-        final List<PatientDetail> result = new ArrayList<>();
+        final List<Patient> result = new ArrayList<>();
         // iterate a list and filter by tagName
-        for (final PatientDetail tag : patientRepo.findAll()) {
+        for (final Patient tag : patientRepo.findAll()) {
             if (!StringUtils.isEmpty(tag.getFirstname()) && tag.getFirstname().contains(name)) {
                 result.add(tag);
             }

@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.vellechokre.entity.DAOUser;
+import com.vellechokre.repository.UserDao;
+
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
@@ -29,7 +32,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 user.getPassword(), new ArrayList<>());
     }
 
-    public DAOUser save(UserDTO user) {
+    public DAOUser save(DAOUser user) {
 
         DAOUser newUser = new DAOUser();
         newUser.setUsername(user.getUsername());

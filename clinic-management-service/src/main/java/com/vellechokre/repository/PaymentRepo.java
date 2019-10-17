@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.entity.VisitDetails;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.entity.Payment;
 
 /**
  * Project clinic-management-service
@@ -14,7 +14,7 @@ import com.vellechokre.entity.VisitDetails;
  * @version 1.0
  * @date Sep 2, 2019
  */
-public interface VisitDetailsRepo extends JpaRepository<VisitDetails, Integer> {
+public interface PaymentRepo extends JpaRepository<Payment, Integer> {
 
-    List<VisitDetails> findByPatient(PatientDetail patientDetail);
+    List<Payment> findByPatient(Patient patientDetail);
 }

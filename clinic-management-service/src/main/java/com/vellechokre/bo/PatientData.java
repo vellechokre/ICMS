@@ -1,8 +1,8 @@
 package com.vellechokre.bo;
 
-import com.vellechokre.entity.AddressDetails;
-import com.vellechokre.entity.AppointmentDetail;
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Address;
+import com.vellechokre.entity.Appointment;
+import com.vellechokre.entity.Patient;
 
 /**
  * Project clinic-management-service
@@ -13,16 +13,16 @@ import com.vellechokre.entity.PatientDetail;
  */
 public class PatientData {
 
-    private PatientDetail patientDetail;
+    private Patient patientDetail;
 
-    private AddressDetails addressDetail;
+    private Address addressDetail;
 
-    private AppointmentDetail appointmentDetail;
+    private Appointment appointmentDetail;
 
     /**
      * @return the patientDetail
      */
-    public PatientDetail getPatientDetail() {
+    public Patient getPatientDetail() {
 
         return patientDetail;
     }
@@ -30,7 +30,7 @@ public class PatientData {
     /**
      * @param patientDetail the patientDetail to set
      */
-    public void setPatientDetail(final PatientDetail patientDetail) {
+    public void setPatientDetail(final Patient patientDetail) {
 
         this.patientDetail = patientDetail;
     }
@@ -38,7 +38,7 @@ public class PatientData {
     /**
      * @return the addressDetail
      */
-    public AddressDetails getAddressDetail() {
+    public Address getAddressDetail() {
 
         return addressDetail;
     }
@@ -46,7 +46,7 @@ public class PatientData {
     /**
      * @param addressDetail the addressDetail to set
      */
-    public void setAddressDetail(final AddressDetails addressDetail) {
+    public void setAddressDetail(final Address addressDetail) {
 
         this.addressDetail = addressDetail;
     }
@@ -54,7 +54,7 @@ public class PatientData {
     /**
      * @return the appointmentDetail
      */
-    public AppointmentDetail getAppointmentDetail() {
+    public Appointment getAppointmentDetail() {
 
         return appointmentDetail;
     }
@@ -62,7 +62,7 @@ public class PatientData {
     /**
      * @param appointmentDetail the appointmentDetail to set
      */
-    public void setAppointmentDetail(final AppointmentDetail appointmentDetail) {
+    public void setAppointmentDetail(final Appointment appointmentDetail) {
 
         this.appointmentDetail = appointmentDetail;
     }

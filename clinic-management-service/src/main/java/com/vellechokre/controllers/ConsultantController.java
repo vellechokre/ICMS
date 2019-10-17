@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.vellechokre.bo.SuccessResponse;
-import com.vellechokre.entity.ConsultantDetail;
-import com.vellechokre.repository.ConsultantDetailsRepo;
+import com.vellechokre.entity.Consultant;
+import com.vellechokre.repository.ConsultantRepo;
 
 /**
  * Project clinic-management-service
@@ -24,11 +24,11 @@ import com.vellechokre.repository.ConsultantDetailsRepo;
 public class ConsultantController {
 
     @Autowired
-    private ConsultantDetailsRepo consultantRepo;
+    private ConsultantRepo consultantRepo;
 
     @SuppressWarnings("rawtypes")
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public ResponseEntity save(@RequestBody final ConsultantDetail consultantDetail) {
+    public ResponseEntity save(@RequestBody final Consultant consultantDetail) {
 
         consultantRepo.save(consultantDetail);
         return new ResponseEntity<>(

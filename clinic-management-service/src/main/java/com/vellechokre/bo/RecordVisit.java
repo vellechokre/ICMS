@@ -2,9 +2,9 @@ package com.vellechokre.bo;
 
 import java.util.List;
 
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.entity.PaymentDetails;
-import com.vellechokre.entity.VisitDetails;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.entity.Payment;
+import com.vellechokre.entity.Visit;
 
 /**
  * Project clinic-management-service
@@ -15,16 +15,16 @@ import com.vellechokre.entity.VisitDetails;
  */
 public class RecordVisit {
 
-    private PatientDetail patientDetail;
+    private Patient patientDetail;
 
-    private List<VisitDetails> visitDetails;
+    private List<Visit> visitDetails;
 
-    private PaymentDetails paymentDetail;
+    private Payment paymentDetail;
 
     /**
      * @return the patientDetail
      */
-    public PatientDetail getPatientDetail() {
+    public Patient getPatientDetail() {
 
         return patientDetail;
     }
@@ -32,7 +32,7 @@ public class RecordVisit {
     /**
      * @param patientDetail the patientDetail to set
      */
-    public void setPatientDetail(final PatientDetail patientDetail) {
+    public void setPatientDetail(final Patient patientDetail) {
 
         this.patientDetail = patientDetail;
     }
@@ -40,7 +40,7 @@ public class RecordVisit {
     /**
      * @return the visitDetails
      */
-    public List<VisitDetails> getVisitDetails() {
+    public List<Visit> getVisitDetails() {
 
         return visitDetails;
     }
@@ -48,7 +48,7 @@ public class RecordVisit {
     /**
      * @param visitDetails the visitDetails to set
      */
-    public void setVisitDetails(final List<VisitDetails> visitDetails) {
+    public void setVisitDetails(final List<Visit> visitDetails) {
 
         this.visitDetails = visitDetails;
     }
@@ -56,7 +56,7 @@ public class RecordVisit {
     /**
      * @return the paymentDetail
      */
-    public PaymentDetails getPaymentDetail() {
+    public Payment getPaymentDetail() {
 
         return paymentDetail;
     }
@@ -64,7 +64,7 @@ public class RecordVisit {
     /**
      * @param paymentDetail the paymentDetail to set
      */
-    public void setPaymentDetail(final PaymentDetails paymentDetail) {
+    public void setPaymentDetail(final Payment paymentDetail) {
 
         this.paymentDetail = paymentDetail;
     }

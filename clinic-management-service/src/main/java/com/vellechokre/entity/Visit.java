@@ -1,14 +1,10 @@
 package com.vellechokre.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 
 /**
  * Project clinic-management-service
@@ -17,17 +13,12 @@ import com.vellechokre.entity.base.BaseObject;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.VISIT_DETAIL_T)
-public class VisitDetails extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "visit_id")
-    private Integer id;
+@Entity(name = EntityContant.VISITS)
+public class Visit extends BaseObjectWithIdAndBranchId {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private PatientDetail patient;
+    private Patient patient;
 
     private String category;
 
@@ -44,25 +35,9 @@ public class VisitDetails extends BaseObject {
     private boolean sendBill;
 
     /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
-
-    /**
      * @return the patient
      */
-    public PatientDetail getPatient() {
+    public Patient getPatient() {
 
         return patient;
     }
@@ -70,7 +45,7 @@ public class VisitDetails extends BaseObject {
     /**
      * @param patient the patient to set
      */
-    public void setPatient(final PatientDetail patient) {
+    public void setPatient(final Patient patient) {
 
         this.patient = patient;
     }

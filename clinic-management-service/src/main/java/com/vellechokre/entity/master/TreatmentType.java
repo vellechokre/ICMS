@@ -1,9 +1,11 @@
-package com.vellechokre.entity;
+package com.vellechokre.entity.master;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.vellechokre.entity.EntityContant;
 
 /**
  * Project clinic-management-service
@@ -12,7 +14,7 @@ import javax.persistence.Id;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.TREATMENT_TYPE_T)
+@Entity(name = EntityContant.TREATMENT_TYPE)
 public class TreatmentType {
 
     @Id

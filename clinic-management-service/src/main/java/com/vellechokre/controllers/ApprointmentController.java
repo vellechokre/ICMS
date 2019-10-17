@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vellechokre.bo.AppointmentBO;
 import com.vellechokre.bo.SuccessResponse;
-import com.vellechokre.entity.AppointmentDetail;
-import com.vellechokre.repository.AppointmentDetailsRepo;
+import com.vellechokre.entity.Appointment;
+import com.vellechokre.repository.AppointmentRepo;
 
 /**
  * Project clinic-management-service
@@ -31,13 +31,13 @@ import com.vellechokre.repository.AppointmentDetailsRepo;
 public class ApprointmentController {
 
     @Autowired
-    private AppointmentDetailsRepo appointmentRepo;
+    private AppointmentRepo appointmentRepo;
 
     @SuppressWarnings("rawtypes")
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public ResponseEntity save(@RequestBody(required = false) final AppointmentDetail appointmentDetail) {
+    public ResponseEntity save(@RequestBody(required = false) final Appointment appointmentDetail) {
 
-        AppointmentDetail appointmentsOld = appointmentRepo
+        Appointment appointmentsOld = appointmentRepo
                 .findByPatientIdAndIsActiveTrue(appointmentDetail.getPatient().getId());
         if (null != appointmentsOld) {
             appointmentsOld.setIsActive(false);
@@ -54,17 +54,17 @@ public class ApprointmentController {
     public List<AppointmentBO> fetchAll() throws ParseException {
 
         DateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        List<AppointmentDetail> appointmentsTemp = appointmentRepo.findAll();
-        List<AppointmentDetail> appointments = new ArrayList<>();
+        List<Appointment> appointmentsTemp = appointmentRepo.findAll();
+        List<Appointment> appointments = new ArrayList<>();
         if (null != appointmentsTemp) {
-            for (AppointmentDetail obj : appointmentsTemp) {
+            for (Appointment obj : appointmentsTemp) {
                 if (obj.getIsActive().equals(true)) {
                     appointments.add(obj);
                 }
             }
         }
         List<AppointmentBO> appointmentBo = new ArrayList<>();
-        for (AppointmentDetail appointment : appointments) {
+        for (Appointment appointment : appointments) {
             if (null != appointment.getAppointmentEndDate()
                 && null != appointment.getAppointmentStartDate()) {
                 AppointmentBO obj = new AppointmentBO();

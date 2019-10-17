@@ -1,58 +1,33 @@
 package com.vellechokre.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.vellechokre.entity.base.BaseObject;
+import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 
 /**
  * Project clinic-management-service
- * 
+ *
  * @author nishant.bhardwaz
  * @version 1.0
  * @date Sep 2, 2019
  */
 @Entity(name = "PAYMENT_DETAILS_T")
-public class PaymentDetails extends BaseObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
-    private Integer id;
+public class Payment extends BaseObjectWithIdAndBranchId {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private PatientDetail patient;
+    private Patient patient;
 
     private Integer amountPaid;
 
     private String note;
 
     /**
-     * @return the id
-     */
-    public Integer getId() {
-
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(final Integer id) {
-
-        this.id = id;
-    }
-
-    /**
      * @return the patient
      */
-    public PatientDetail getPatient() {
+    public Patient getPatient() {
 
         return patient;
     }
@@ -60,7 +35,7 @@ public class PaymentDetails extends BaseObject {
     /**
      * @param patient the patient to set
      */
-    public void setPatient(final PatientDetail patient) {
+    public void setPatient(final Patient patient) {
 
         this.patient = patient;
     }

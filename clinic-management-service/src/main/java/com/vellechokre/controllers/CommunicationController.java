@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 import com.vellechokre.services.CommuncationService;
 
 /**
@@ -27,7 +27,7 @@ public class CommunicationController {
     private CommuncationService service;
 
     @RequestMapping(value = "sendSms", method = RequestMethod.POST)
-    public ResponseEntity sendSms(@RequestBody final List<PatientDetail> patients,
+    public ResponseEntity sendSms(@RequestBody final List<Patient> patients,
                                   @RequestParam String message) {
 
         return service.sendSms(patients, message);

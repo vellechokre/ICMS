@@ -1,4 +1,4 @@
-package com.vellechokre.entity;
+package com.vellechokre.entity.master;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.vellechokre.entity.EntityContant;
+
 /**
  * Project clinic-management-service
  *
@@ -14,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @version 1.0
  * @date Sep 2, 2019
  */
-@Entity(name = EntityContant.TREATMENT_CATEGORY_T)
+@Entity(name = EntityContant.TREATMENT_CATEGORY)
 public class TreatmentCategory {
 
     @Id

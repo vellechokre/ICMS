@@ -1,7 +1,7 @@
 package com.vellechokre.services;
 
 import com.vellechokre.bo.Mail;
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 
 /**
  * Project clinic-management-service
@@ -22,5 +22,5 @@ public interface MailService {
      */
     public void sendAddressEmail(Mail mail);
 
-    public Mail composeMail(final PatientDetail patientDetail);
+    public Mail composeMail(final Patient patientDetail);
 }

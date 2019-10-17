@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 
 /**
  * Project clinic-management-service
@@ -20,5 +20,5 @@ public interface CommuncationService {
      * @param message
      * @return
      */
-    ResponseEntity sendSms(List<PatientDetail> patients, String message);
+    ResponseEntity sendSms(List<Patient> patients, String message);
 }

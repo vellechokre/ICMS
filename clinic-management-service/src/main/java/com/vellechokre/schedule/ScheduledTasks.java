@@ -12,10 +12,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.vellechokre.entity.AppointmentDetail;
-import com.vellechokre.entity.PatientDetail;
-import com.vellechokre.repository.AppointmentDetailsRepo;
-import com.vellechokre.repository.PatientDetailRepo;
+import com.vellechokre.entity.Appointment;
+import com.vellechokre.entity.Patient;
+import com.vellechokre.repository.AppointmentRepo;
+import com.vellechokre.repository.PatientRepo;
 import com.vellechokre.util.ApplicationConstant;
 import com.vellechokre.util.DateUtil;
 import com.vellechokre.util.RestUtil;
@@ -34,10 +34,10 @@ public class ScheduledTasks {
     private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
 
     @Autowired
-    private AppointmentDetailsRepo appointmentRepo;
+    private AppointmentRepo appointmentRepo;
 
     @Autowired
-    private PatientDetailRepo patientRepo;
+    private PatientRepo patientRepo;
 
     @Scheduled(cron = "0 15 10 * * ?")
     public void oneDayBeforeReminder() {
@@ -50,7 +50,7 @@ public class ScheduledTasks {
         final Date endDate = calendar.getTime();
         final Calendar calNext = Calendar.getInstance();
         calNext.add(Calendar.DATE, 1);
-        final List<AppointmentDetail> appointments = appointmentRepo
+        final List<Appointment> appointments = appointmentRepo
                 .findByIsActiveTrueAndAppointmentStartDateBetween(startDate, endDate);
         appointments.forEach(appointment -> {
             if (!StringUtils.isEmpty(appointment.getPatient().getNumber())) {
@@ -74,7 +74,7 @@ public class ScheduledTasks {
         calendar = Calendar.getInstance();
         DateUtil.toEndOfTheDay(calendar);
         final Date endDate = calendar.getTime();
-        final List<PatientDetail> patients =
+        final List<Patient> patients =
                 patientRepo.findByIsActiveTrueAndDobBetween(startDate, endDate);
         patients.forEach(patient -> {
             if (!StringUtils.isEmpty(patient.getNumber())) {

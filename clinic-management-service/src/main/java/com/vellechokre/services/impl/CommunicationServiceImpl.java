@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.vellechokre.bo.SuccessResponse;
-import com.vellechokre.entity.PatientDetail;
+import com.vellechokre.entity.Patient;
 import com.vellechokre.services.CommuncationService;
 import com.vellechokre.util.ApplicationConstant;
 import com.vellechokre.util.RestUtil;
@@ -26,7 +26,7 @@ import com.vellechokre.util.SmsUtil;
 public class CommunicationServiceImpl implements CommuncationService {
 
     @Override
-    public ResponseEntity sendSms(List<PatientDetail> patients, String message) {
+    public ResponseEntity sendSms(List<Patient> patients, String message) {
 
         patients.forEach(patient -> {
             if (!StringUtils.isEmpty(patient.getNumber())) {

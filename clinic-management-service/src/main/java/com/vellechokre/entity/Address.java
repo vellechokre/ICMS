@@ -29,23 +29,23 @@ public class Address extends BaseObjectWithIdAndBranchId {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "country_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "country_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Country country;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "state_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "state_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private State state;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "district_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "district_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private District district;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "city_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private City city;
 

@@ -1,13 +1,14 @@
 package com.vellechokre.entity.master;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import com.vellechokre.entity.Branch;
 import com.vellechokre.entity.EntityContant;
@@ -23,10 +24,10 @@ import com.vellechokre.entity.base.BaseObjectWithId;
 @Entity(name = EntityContant.SPECIALITY)
 public class Speciality extends BaseObjectWithId {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "branch_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Branch branch;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "speciality_branch", joinColumns = {@JoinColumn(name = "speciality_id")},
+               inverseJoinColumns = {@JoinColumn(name = "branch_id")})
+    private Set<Branch> branchs = new HashSet<>();
 
     @NotNull(message = "Speciality Name can't be null.")
     private String name;
@@ -35,19 +36,19 @@ public class Speciality extends BaseObjectWithId {
     private String description;
 
     /**
-     * @return the branch
+     * @return the branchs
      */
-    public Branch getBranch() {
+    public Set<Branch> getBranchs() {
 
-        return branch;
+        return branchs;
     }
 
     /**
-     * @param branch the branch to set
+     * @param branchs the branchs to set
      */
-    public void setBranch(Branch branch) {
+    public void setBranchs(Set<Branch> branchs) {
 
-        this.branch = branch;
+        this.branchs = branchs;
     }
 
     /**

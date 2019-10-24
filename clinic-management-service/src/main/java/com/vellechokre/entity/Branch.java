@@ -15,6 +15,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.vellechokre.entity.base.BaseObjectWithId;
+import com.vellechokre.entity.master.Speciality;
 
 /**
  * Project clinic-management-service
@@ -42,6 +43,10 @@ public class Branch extends BaseObjectWithId {
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
                 mappedBy = "branchs")
     private Set<LoginUser> users = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+                mappedBy = "branchs")
+    private Set<Speciality> specialities = new HashSet<>();
 
     /**
      * @return the code
@@ -121,5 +126,21 @@ public class Branch extends BaseObjectWithId {
     public void setUsers(Set<LoginUser> users) {
 
         this.users = users;
+    }
+
+    /**
+     * @return the specialities
+     */
+    public Set<Speciality> getSpecialities() {
+
+        return specialities;
+    }
+
+    /**
+     * @param specialities the specialities to set
+     */
+    public void setSpecialities(Set<Speciality> specialities) {
+
+        this.specialities = specialities;
     }
 }

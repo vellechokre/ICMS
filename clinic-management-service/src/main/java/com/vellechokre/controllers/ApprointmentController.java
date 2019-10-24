@@ -21,13 +21,13 @@ import com.vellechokre.repository.AppointmentRepo;
 
 /**
  * Project clinic-management-service
- * 
+ *
  * @author nishant.bhardwaz
  * @version 1.0
  * @date Sep 2, 2019
  */
 @RestController
-@RequestMapping(value = "appointment")
+@RequestMapping(value = "appointments")
 public class ApprointmentController {
 
     @Autowired

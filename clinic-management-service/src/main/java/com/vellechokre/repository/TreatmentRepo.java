@@ -1,8 +1,8 @@
-package com.vellechokre.repository.master;
+package com.vellechokre.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.vellechokre.entity.master.Treatment;
+import com.vellechokre.entity.Treatment;
 
 /**
  * Project clinic-management-service

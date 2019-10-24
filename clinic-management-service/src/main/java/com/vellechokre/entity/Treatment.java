@@ -1,9 +1,8 @@
-package com.vellechokre.entity.master;
+package com.vellechokre.entity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-import com.vellechokre.entity.EntityContant;
 import com.vellechokre.entity.base.BaseObjectWithId;
 
 /**

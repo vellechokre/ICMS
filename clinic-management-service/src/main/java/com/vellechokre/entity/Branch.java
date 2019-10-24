@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
+import com.vellechokre.entity.base.BaseObjectWithId;
 
 /**
  * Project clinic-management-service
@@ -24,7 +24,7 @@ import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
  * @date Oct 16, 2019
  */
 @Entity(name = EntityContant.BRANCH)
-public class Branch extends BaseObjectWithIdAndBranchId {
+public class Branch extends BaseObjectWithId {
 
     private String code;
 

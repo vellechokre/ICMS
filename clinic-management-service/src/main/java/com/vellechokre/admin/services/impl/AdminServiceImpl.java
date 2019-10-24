@@ -57,7 +57,6 @@ public class AdminServiceImpl implements AdminService {
 
         branch = new Branch();
         branch.setName("Test Clinic");
-        branch.setCode("TSTCD");
         branch.setCode(branch.getCode());
         return branchRepo.save(branch);
     }

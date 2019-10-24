@@ -1,57 +1,57 @@
-// package com.vellechokre.entity.master;
-//
-// import javax.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.GenerationType;
-// import javax.persistence.Id;
-//
-// import com.vellechokre.entity.EntityContant;
-//
-/// **
-// * Project clinic-management-service
-// *
-// * @author nishant.bhardwaz
-// * @version 1.0
-// * @date Sep 2, 2019
-// */
-// @Entity(name = EntityContant.TREATMENT_TYPE)
-// public class TreatmentType {
-//
-// @Id
-// @GeneratedValue(strategy = GenerationType.IDENTITY)
-// private Integer treatmentTypeId;
-//
-// private String description;
-//
-// /**
-// * @return the treatmentTypeId
-// */
-// public Integer getTreatmentTypeId() {
-//
-// return treatmentTypeId;
-// }
-//
-// /**
-// * @param treatmentTypeId the treatmentTypeId to set
-// */
-// public void setTreatmentTypeId(final Integer treatmentTypeId) {
-//
-// this.treatmentTypeId = treatmentTypeId;
-// }
-//
-// /**
-// * @return the description
-// */
-// public String getDescription() {
-//
-// return description;
-// }
-//
-// /**
-// * @param description the description to set
-// */
-// public void setDescription(final String description) {
-//
-// this.description = description;
-// }
-// }
+package com.vellechokre.entity.master;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.vellechokre.entity.EntityContant;
+import com.vellechokre.entity.base.BaseObjectWithId;
+
+/***
+ * Project clinic-management-service**
+ *
+ * @author nishant.bhardwaz
+ * @version 1.0
+ * @date Sep 2, 2019
+ */
+@Entity(name = EntityContant.TREATMENT_TYPE)
+public class TreatmentType extends BaseObjectWithId {
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "specialityId")
+    private Speciality speciality;
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+
+        this.description = description;
+    }
+
+    /**
+     * @return the speciality
+     */
+    public Speciality getSpeciality() {
+
+        return speciality;
+    }
+
+    /**
+     * @param speciality the speciality to set
+     */
+    public void setSpeciality(Speciality speciality) {
+
+        this.speciality = speciality;
+    }
+}

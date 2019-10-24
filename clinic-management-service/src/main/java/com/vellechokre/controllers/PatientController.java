@@ -22,13 +22,13 @@ import com.vellechokre.services.PatientService;
 
 /**
  * Project clinic-management-service
- * 
+ *
  * @author nishant.bhardwaz
  * @version 1.0
  * @date Sep 2, 2019
  */
 @RestController
-@RequestMapping(value = "patient")
+@RequestMapping(value = "patients")
 public class PatientController {
 
     @Autowired

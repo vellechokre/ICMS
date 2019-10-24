@@ -1,3 +1,4 @@
+package com.vellechokre.repository.master;
 // package com.vellechokre.repository;
 //
 // import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,42 +1,39 @@
 package com.vellechokre.security;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.vellechokre.entity.DAOUser;
-import com.vellechokre.repository.UserDao;
+import com.vellechokre.bo.LoginUserBo;
+import com.vellechokre.entity.LoginUser;
+import com.vellechokre.repository.LoginUserRepo;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private LoginUserRepo userDao;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public LoginUserBo loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        DAOUser user = userDao.findByUsername(username);
+        LoginUser user = userDao.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                user.getPassword(), new ArrayList<>());
+        return new LoginUserBo(user.getUsername(), user.getPassword(), user.getId(),
+                user.getClinic(), user.getBranchs(), user.getLoginAuthorities(),
+                user.getActiveTill());
     }
 
-    public DAOUser save(DAOUser user) {
+    public LoginUser save(LoginUser user) {
 
-        DAOUser newUser = new DAOUser();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        return userDao.save(newUser);
+        user.setPassword(bcryptEncoder.encode(user.getPassword()));
+        return userDao.save(user);
     }
 }

@@ -9,6 +9,8 @@ package com.vellechokre.util;
  */
 public abstract class ApplicationConstant {
 
+    public static final String BRANCH_ID = "x_branch_id";
+
     public final static String BASE_URL_SMS = "http://sms.adityahosting.com/api/sendhttp.php";
 
     public final static String AUTH_KEY = "authkey";

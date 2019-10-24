@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vellechokre.entity.master.TreatmentCategory;
-import com.vellechokre.repository.TreatmentCategoryRepo;
+import com.vellechokre.entity.master.Treatment;
+import com.vellechokre.repository.master.TreatmentRepo;
 
 /**
  * Project clinic-management-service
@@ -21,13 +21,13 @@ import com.vellechokre.repository.TreatmentCategoryRepo;
 public class MasterEntryController {
 
     @Autowired
-    private TreatmentCategoryRepo treatmentCategoryRepo;
+    private TreatmentRepo treatmentRepo;
 
-    @RequestMapping(value = "/treatmentCategory/save", method = RequestMethod.POST,
+    @RequestMapping(value = "/treatment/save", method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void save(@RequestBody final TreatmentCategory treatmentCategory) {
+    public void save(@RequestBody final Treatment treatment) {
 
-        treatmentCategoryRepo.save(treatmentCategory);
+        treatmentRepo.save(treatment);
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.vellechokre.entity.Branch;
 import com.vellechokre.entity.Clinic;
-import com.vellechokre.entity.DAOUser;
+import com.vellechokre.entity.LoginUser;
 
 /**
  * Project clinic-management-service
@@ -31,7 +31,7 @@ public interface AdminService {
      * @param user
      * @return
      */
-    DAOUser createUser(DAOUser user);
+    LoginUser createUser(LoginUser user);
 
     /**
      * @return

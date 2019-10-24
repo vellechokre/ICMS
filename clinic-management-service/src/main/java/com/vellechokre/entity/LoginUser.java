@@ -1,6 +1,8 @@
 package com.vellechokre.entity;
 
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,15 +15,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
 
-@Entity
-@Table(name = "user")
-public class DAOUser {
+import com.vellechokre.entity.master.LoginAuthority;
+
+@Entity(name = EntityContant.LOGIN_USER)
+public class LoginUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +47,13 @@ public class DAOUser {
     @JoinTable(name = "user_branch", joinColumns = {@JoinColumn(name = "user_id")},
                inverseJoinColumns = {@JoinColumn(name = "branch_id")})
     private Set<Branch> branchs = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<LoginAuthority> loginAuthorities;
+
+    @CreatedDate
+    @NotNull(message = "activeTill can't be null.")
+    private Date activeTill;
 
     /**
      * @return the id
@@ -123,5 +133,37 @@ public class DAOUser {
     public void setBranchs(Set<Branch> branchs) {
 
         this.branchs = branchs;
+    }
+
+    /**
+     * @return the loginAuthorities
+     */
+    public List<LoginAuthority> getLoginAuthorities() {
+
+        return loginAuthorities;
+    }
+
+    /**
+     * @param loginAuthorities the loginAuthorities to set
+     */
+    public void setLoginAuthorities(List<LoginAuthority> loginAuthorities) {
+
+        this.loginAuthorities = loginAuthorities;
+    }
+
+    /**
+     * @return the activeTill
+     */
+    public Date getActiveTill() {
+
+        return activeTill;
+    }
+
+    /**
+     * @param activeTill the activeTill to set
+     */
+    public void setActiveTill(Date activeTill) {
+
+        this.activeTill = activeTill;
     }
 }

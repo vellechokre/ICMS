@@ -63,6 +63,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 // Spring Security Configurations successfully.
                 SecurityContextHolder.getContext()
                         .setAuthentication(usernamePasswordAuthenticationToken);
+            } else {
+                Boolean loginExpired = jwtTokenUtil.isLoginExpired(jwtToken);
+                if (loginExpired) {
+                    response.sendError(1401, "Please recharge your account to use application");
+                } else {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                }
             }
         }
         chain.doFilter(request, response);

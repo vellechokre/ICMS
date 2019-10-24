@@ -6,14 +6,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vellechokre.entity.DAOUser;
+import com.vellechokre.bo.LoginUserBo;
+import com.vellechokre.entity.LoginUser;
 
 @RestController
 @CrossOrigin
@@ -32,14 +32,14 @@ public class JwtAuthenticationController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        final UserDetails userDetails =
+        final LoginUserBo loginUser =
                 userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        final String token = jwtTokenUtil.generateToken(loginUser);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody DAOUser user) throws Exception {
+    public ResponseEntity<?> saveUser(@RequestBody LoginUser user) throws Exception {
 
         return ResponseEntity.ok(userDetailsService.save(user));
     }

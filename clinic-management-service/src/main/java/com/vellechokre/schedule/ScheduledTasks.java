@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import com.vellechokre.config.ApplicationContext;
 import com.vellechokre.entity.Appointment;
 import com.vellechokre.entity.Patient;
 import com.vellechokre.repository.AppointmentRepo;
@@ -23,7 +24,7 @@ import com.vellechokre.util.SmsUtil;
 
 /**
  * Project clinic-management-service
- * 
+ *
  * @author nishant.bhardwaz
  * @version 1.0
  * @date Sep 2, 2019
@@ -74,8 +75,8 @@ public class ScheduledTasks {
         calendar = Calendar.getInstance();
         DateUtil.toEndOfTheDay(calendar);
         final Date endDate = calendar.getTime();
-        final List<Patient> patients =
-                patientRepo.findByIsActiveTrueAndDobBetween(startDate, endDate);
+        final List<Patient> patients = patientRepo.findByIsActiveTrueAndDobBetweenAndBranchId(
+                startDate, endDate, ApplicationContext.getId());
         patients.forEach(patient -> {
             if (!StringUtils.isEmpty(patient.getNumber())) {
                 final Map<String, Object> params =

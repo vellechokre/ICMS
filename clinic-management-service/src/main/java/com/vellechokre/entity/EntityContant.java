@@ -17,6 +17,14 @@ public class EntityContant {
     public final static String STATE = "STATES";
 
     public final static String COUNTRY = "COUNTRIES";
+
+    public final static String SPECIALITY = "SPECIALITIES";
+
+    public final static String TREATMENT = "TREATMENTS";
+
+    public final static String LOGIN_USER = "USERS";
+
+    public final static String LOGIN_AUTHORITY = "AUTHORITIES";
     // --------------- CONSTANT FOR MASTER TABLES ENDS HERE -----------------
 
     public final static String CLINIC = "CLINICS";

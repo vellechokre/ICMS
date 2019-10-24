@@ -1,4 +1,4 @@
-package com.aak.domain;
+package com.vellechokre.entity.master;
 
 import java.io.Serializable;
 
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.vellechokre.entity.EntityContant;
+
 /**
  * Project authorization_server
  *
@@ -16,8 +18,8 @@ import org.springframework.security.core.GrantedAuthority;
  * @version 1.0
  * @date Aug 27, 2019
  */
-@Entity
-public class Authority implements GrantedAuthority, Serializable {
+@Entity(name = EntityContant.LOGIN_AUTHORITY)
+public class LoginAuthority implements GrantedAuthority, Serializable {
 
     private static final long serialVersionUID = 1L;
 

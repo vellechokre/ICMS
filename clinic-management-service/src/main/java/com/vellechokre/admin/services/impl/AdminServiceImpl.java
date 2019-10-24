@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.vellechokre.admin.services.AdminService;
 import com.vellechokre.entity.Branch;
 import com.vellechokre.entity.Clinic;
-import com.vellechokre.entity.DAOUser;
+import com.vellechokre.entity.LoginUser;
 import com.vellechokre.repository.BranchRepo;
 import com.vellechokre.repository.ClinicRepo;
-import com.vellechokre.repository.UserDao;
+import com.vellechokre.repository.LoginUserRepo;
 
 /**
  * Project clinic-management-service
@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
     private BranchRepo branchRepo;
 
     @Autowired
-    private UserDao userRepo;
+    private LoginUserRepo userRepo;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -58,12 +58,12 @@ public class AdminServiceImpl implements AdminService {
         branch = new Branch();
         branch.setName("Test Clinic");
         branch.setCode("TSTCD");
-        branch.setBranchCode(branch.getCode());
+        branch.setCode(branch.getCode());
         return branchRepo.save(branch);
     }
 
     @Override
-    public DAOUser createUser(DAOUser user) {
+    public LoginUser createUser(LoginUser user) {
 
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         return userRepo.save(user);

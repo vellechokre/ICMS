@@ -41,7 +41,7 @@ public class Branch extends BaseObjectWithIdAndBranchId {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
                 mappedBy = "branchs")
-    private Set<DAOUser> users = new HashSet<>();
+    private Set<LoginUser> users = new HashSet<>();
 
     /**
      * @return the code
@@ -110,7 +110,7 @@ public class Branch extends BaseObjectWithIdAndBranchId {
     /**
      * @return the users
      */
-    public Set<DAOUser> getUsers() {
+    public Set<LoginUser> getUsers() {
 
         return users;
     }
@@ -118,7 +118,7 @@ public class Branch extends BaseObjectWithIdAndBranchId {
     /**
      * @param users the users to set
      */
-    public void setUsers(Set<DAOUser> users) {
+    public void setUsers(Set<LoginUser> users) {
 
         this.users = users;
     }

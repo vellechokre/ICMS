@@ -1,6 +1,12 @@
 package com.vellechokre.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import org.springframework.util.StringUtils;
 
 /**
  * Project clinic-management-service
@@ -10,6 +16,8 @@ import java.util.Calendar;
  * @date Sep 2, 2019
  */
 public class DateUtil {
+
+    public static final String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
 
     /**
      * Sets a {@link Calendar} to midnight (00:00:00) at the date currently selected.
@@ -38,5 +46,22 @@ public class DateUtil {
         DateUtil.toBeginningOfTheDay(calendar);
         calendar.add(Calendar.DATE, 1);
         calendar.add(Calendar.SECOND, -1);
+    }
+
+    public static String dateToString(Date date, String format) {
+
+        if (StringUtils.isEmpty(format)) {
+            format = DATE_FORMAT;
+        }
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(date);
+    }
+
+    public static Date stringToDate(String date, String format) throws ParseException {
+
+        if (StringUtils.isEmpty(format)) {
+            format = DATE_FORMAT;
+        }
+        return new SimpleDateFormat(format).parse(date);
     }
 }

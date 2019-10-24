@@ -12,6 +12,7 @@ spring:
     jpa:
       hibernate:
         ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL5Dialect
 # --- server
 server:
   port: 8083

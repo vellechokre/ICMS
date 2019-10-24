@@ -13,7 +13,7 @@ import com.vellechokre.admin.services.AdminService;
 import com.vellechokre.bo.SuccessResponse;
 import com.vellechokre.entity.Branch;
 import com.vellechokre.entity.Clinic;
-import com.vellechokre.entity.DAOUser;
+import com.vellechokre.entity.LoginUser;
 import com.vellechokre.util.ApplicationConstant;
 import com.vellechokre.util.ApplicationUtil;
 
@@ -58,9 +58,9 @@ public class AdminController {
      * @return
      */
     @PostMapping(value = "create-user")
-    public ResponseEntity<?> createUser(@RequestBody DAOUser user) {
+    public ResponseEntity<?> createUser(@RequestBody LoginUser user) {
 
-        return ApplicationUtil.getResponseEntity("Branch created successfully.",
+        return ApplicationUtil.getResponseEntity("User created successfully.",
                 service.createUser(user));
     }
 

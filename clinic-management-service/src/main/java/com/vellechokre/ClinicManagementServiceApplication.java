@@ -13,17 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.HttpMethod;
+import org.springframework.util.StringUtils;
 
+import com.vellechokre.config.ApplicationContext;
 import com.vellechokre.config.SecurityAuditorAware;
-import com.vellechokre.security.JwtTokenUtil;
-import com.vellechokre.security.JwtUserDetailsService;
+import com.vellechokre.util.ApplicationConstant;
 
 /**
  * Project clinic-management-service
@@ -33,16 +36,12 @@ import com.vellechokre.security.JwtUserDetailsService;
  * @date Aug 28, 2019
  */
 @SpringBootApplication
+@EnableJpaRepositories("com.vellechokre")
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class ClinicManagementServiceApplication {
 
     private static final Logger logger =
             LoggerFactory.getLogger(ClinicManagementServiceApplication.class);
-
-    @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
     public static void main(String[] args) {
 
@@ -71,9 +70,52 @@ public class ClinicManagementServiceApplication {
                         "POST, GET, OPTIONS, DELETE, PUT,PATCH");
                 response.setHeader("Access-Control-Max-Age", "3600");
                 response.setHeader("Access-Control-Allow-Headers",
-                        "Content-Type, Accept, X-Requested-With, remember-me, Authorization,x_tenant,enctype");
+                        "Content-Type, Accept, X-Requested-With, remember-me, Authorization,x_branch_id,enctype");
                 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                 long time = System.currentTimeMillis();
+                // Get branch code from request header
+                final HttpServletRequest request = (HttpServletRequest) req;
+                logger.debug("Method requested is {} and URI is {}", request.getMethod(),
+                        request.getRequestURI());
+                if (!request.getMethod().equalsIgnoreCase(HttpMethod.OPTIONS.name())
+                    && !request.getRequestURI().contains("actuator")
+                    && !request.getRequestURI().contains("swagger")
+                    && !request.getRequestURI().contains("v2")
+                    && !request.getRequestURI().contains("img")
+                    && !request.getRequestURI().contains("crons")
+                /*
+                 * && !request.getRequestURI() .contains("zipkins")
+                 */) {
+                    String branchId = request.getHeader(ApplicationConstant.BRANCH_ID);
+                    logger.debug("Request is done by branch with Id {}, for {} API.", branchId,
+                            request.getRequestURI());
+                    if (StringUtils.isEmpty(branchId)) {
+                        /*
+                         * In case of public ip header will not contain x_branch_id, In that case x_branch_id will
+                         * be in parameter.
+                         */
+                        branchId = request.getParameter(ApplicationConstant.BRANCH_ID);
+                        /*
+                         * If branchId is null then send validation exception as branchId is mandatory to
+                         * resolve DB in multi-tanent system.
+                         */
+                        if (StringUtils.isEmpty(branchId)) {
+                            logger.error("Branch Id is null for {} API", request.getRequestURI());
+                            response.getWriter().write("Branch Id is mandatory for any request.");
+                            return;
+                        }
+                    }
+                    ApplicationContext.setId(Integer.valueOf(branchId));
+                } else {
+                    logger.debug("Api called is {} and http method is {}", request.getRequestURI(),
+                            request.getMethod());
+                    /*
+                     * Kubernets uses /health api to check JAR health. which internally uses database health
+                     * check, therefore setting default tenant which will be same for all environment
+                     * (DEV,QA,STAGING and PROD).
+                     */
+                    ApplicationContext.setId(0);
+                }
                 chain.doFilter(req, res);
                 time = System.currentTimeMillis() - time;
                 logger.debug("Time taken by method {}: {} ms ",

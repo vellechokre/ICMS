@@ -5,7 +5,7 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 5
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost/icms?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+        url: jdbc:mysql://localhost:3306/icms?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
         username: root
         password: system
         initialization-mode: always
@@ -13,9 +13,16 @@ spring:
       hibernate:
         ddl-auto: update
         dialect: org.hibernate.dialect.MySQL5Dialect
-# --- server
-server:
-  port: 8083
+        
+chokre:
+  pdfTemplate: 
+    invoiceWithDetails: C:\medpharm_workspace\sib-service\src\main\resources\templates\invoiceWithDetail.jasper
+    invoiceWithoutLetterHeadWithDetails: C:\medpharm_workspace\sib-service\src\main\resources\templates\invoiceWithDetailWithoutHeader.jasper
+    invoiceWithoutDetials: C:\medpharm_workspace\sib-service\src\main\resources\templates\invoiceWithoutDetail.jasper
+    invoiceWithoutLetterHeadWithoutDetails: C:\medpharm_workspace\sib-service\src\main\resources\templates\invoiceWithOutDetailWithoutHeader.jasper
+    paymentProcedure: C:\medpharm_workspace\sib-service\src\main\resources\templates\payment_procedure.jasper
+    creditNote: C:\medpharm_workspace\sib-service\src\main\resources\templates\creditNote.jasper
+    creditNoteWithoutHeader: C:\medpharm_workspace\sib-service\src\main\resources\templates\creditNoteWithoutLetterHead.jasper
 
 
 

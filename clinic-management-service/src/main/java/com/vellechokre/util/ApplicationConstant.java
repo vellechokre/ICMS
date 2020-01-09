@@ -41,4 +41,43 @@ public abstract class ApplicationConstant {
     public final static String BIRTHDAY_WISH_SMS = "dev dental clinic wishes you happy birthday";
 
     public final static String DATA_FETCH_SUCCESS = "Data fetched successfully.";
+
+    public final static String DATA_SAVE_SUCCESS = "Data saved successfully.";
+
+    public static final String CONTENT_DISPOSITION = "Content-disposition";
+
+    public static final String ATTACHEMENT_FILENAME = "attachment;filename=";
+
+    public static final String HYPHEN = "-";
+
+    public static final String INVOICE_TYPE = "type";
+
+    public static final String DATE_FORMAT = "ddMMMyy";
+
+    public static final String DATE_FORMAT_UTC_TIMEZONE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+
+    public static final String TIME_ZONE_IST = "IST";
+
+    public static final String DEFAULT_TIME_ZONE = "UTC";
+
+    /*
+     * Pdf action Constant starts from here
+     */
+    public static final String WITH_DETAIL = "withDetail";
+
+    public static final String WITHOUT_DETAIL = "withoutDetail";
+
+    public static final String WITH_DETAIL_WITHOUT_LETTER_HEAD = "withDetailWithoutLetterHead";
+
+    public static final String WITHOUT_DETAIL_WITHOUT__LETTER_HEAD =
+            "withoutDetailWithoutLetterHead";
+
+    public static final String PAYMENT_PROCEDURE = "paymentProcedure";
+
+    public static final String CREDIT_NOTE_PDF_LETTER_HEAD = "creditNotePdfWithLetterHead";
+
+    public static final String CREDIT_NOTE_PDF_WITHOUT_LETTER_HEAD =
+            "creditNotePdfWithoutLetterHead";
+
+    public static final String SET_SIGNATURE = "SET_SIGNATURE";
 }

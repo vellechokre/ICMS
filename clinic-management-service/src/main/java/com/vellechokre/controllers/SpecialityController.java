@@ -1,5 +1,6 @@
 package com.vellechokre.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vellechokre.bo.SuccessResponse;
 import com.vellechokre.entity.master.Speciality;
+import com.vellechokre.services.SpecialityService;
 import com.vellechokre.util.ApplicationUtil;
 
 /**
@@ -21,9 +23,13 @@ import com.vellechokre.util.ApplicationUtil;
 @RequestMapping(value = "specialities")
 public class SpecialityController {
 
+    @Autowired
+    private SpecialityService service;
+
     @PostMapping
     public ResponseEntity<SuccessResponse> create(@RequestBody Speciality speciality) {
 
-        return ApplicationUtil.getResponseEntity("Speciality Created successfully.", null);
+        return ApplicationUtil.getResponseEntity("Speciality Created successfully.",
+                service.create(speciality));
     }
 }

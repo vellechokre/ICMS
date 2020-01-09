@@ -38,12 +38,12 @@ public class LoginUser {
     // @JsonIgnore
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "clinic_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Clinic clinic;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_branch", joinColumns = {@JoinColumn(name = "user_id")},
                inverseJoinColumns = {@JoinColumn(name = "branch_id")})
     private Set<Branch> branchs = new HashSet<>();

@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
@@ -38,6 +39,7 @@ import com.vellechokre.util.ApplicationConstant;
 @SpringBootApplication
 @EnableJpaRepositories("com.vellechokre")
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@ComponentScan(basePackages = "com.vellechokre")
 public class ClinicManagementServiceApplication {
 
     private static final Logger logger =

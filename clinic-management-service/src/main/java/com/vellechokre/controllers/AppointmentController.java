@@ -28,7 +28,7 @@ import com.vellechokre.repository.AppointmentRepo;
  */
 @RestController
 @RequestMapping(value = "appointments")
-public class ApprointmentController {
+public class AppointmentController {
 
     @Autowired
     private AppointmentRepo appointmentRepo;

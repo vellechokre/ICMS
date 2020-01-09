@@ -71,7 +71,7 @@ public class AdminController {
                 service.getAllClinic());
     }
 
-    @GetMapping(value = "fetch-clinics/{clinicCode}")
+    @GetMapping(value = "fetch-branches/{clinicCode}")
     public ResponseEntity<SuccessResponse> getBranchsByClinic(@PathVariable String clinicCode) {
 
         return ApplicationUtil.getResponseEntity(ApplicationConstant.DATA_FETCH_SUCCESS,

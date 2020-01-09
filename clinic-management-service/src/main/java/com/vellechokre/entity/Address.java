@@ -12,7 +12,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 import com.vellechokre.entity.master.City;
 import com.vellechokre.entity.master.Country;
-import com.vellechokre.entity.master.District;
 import com.vellechokre.entity.master.State;
 
 /**
@@ -39,11 +38,10 @@ public class Address extends BaseObjectWithIdAndBranchId {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private State state;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "district_id", nullable = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private District district;
-
+    // @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    // @JoinColumn(name = "district_id", nullable = true)
+    // @OnDelete(action = OnDeleteAction.CASCADE)
+    // private District district;
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "city_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -103,22 +101,21 @@ public class Address extends BaseObjectWithIdAndBranchId {
         this.state = state;
     }
 
-    /**
-     * @return the district
-     */
-    public District getDistrict() {
-
-        return district;
-    }
-
-    /**
-     * @param district the district to set
-     */
-    public void setDistrict(District district) {
-
-        this.district = district;
-    }
-
+    // /**
+    // * @return the district
+    // */
+    // public District getDistrict() {
+    //
+    // return district;
+    // }
+    //
+    // /**
+    // * @param district the district to set
+    // */
+    // public void setDistrict(District district) {
+    //
+    // this.district = district;
+    // }
     /**
      * @return the city
      */

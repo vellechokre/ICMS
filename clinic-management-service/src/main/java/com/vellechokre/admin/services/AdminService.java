@@ -2,6 +2,7 @@ package com.vellechokre.admin.services;
 
 import java.util.List;
 
+import com.vellechokre.bo.BranchBo;
 import com.vellechokre.entity.Branch;
 import com.vellechokre.entity.Clinic;
 import com.vellechokre.entity.LoginUser;
@@ -42,5 +43,5 @@ public interface AdminService {
      * @param clinicCode
      * @return
      */
-    List<Branch> getBranchsByClinic(String clinicCode);
+    List<BranchBo> getBranchsByClinic(String clinicCode);
 }

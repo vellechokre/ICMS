@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "chokre.pdf-template.invoice-with-details",
+    "type": "java.lang.String",
+    "description": "A description for 'chokre.pdf-template.invoice-with-details'"
+  },
+  {
+    "name": "chokre.pdf-template.invoice-without-letter-head-with-details",
+    "type": "java.lang.String",
+    "description": "A description for 'chokre.pdf-template.invoice-without-letter-head-with-details'"
+  },
+  {
+    "name": "chokre.pdf-template.invoice-without-detials",
+    "type": "java.lang.String",
+    "description": "A description for 'chokre.pdf-template.invoice-without-detials'"
+  },
+  {
+    "name": "chokre.pdf-template.invoice-without-letter-head-without-details",
+    "type": "java.lang.String",
+    "description": "A description for 'chokre.pdf-template.invoice-without-letter-head-without-details'"
+  },
+  {
+    "name": "chokre.pdf-template.payment-procedure",
+    "type": "java.lang.String",
+    "description": "A description for 'chokre.pdf-template.payment-procedure'"
+  }
+]}

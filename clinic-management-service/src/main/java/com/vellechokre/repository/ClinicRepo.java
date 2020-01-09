@@ -11,4 +11,7 @@ import com.vellechokre.entity.Clinic;
  * @version 1.0
  * @date Oct 16, 2019
  */
-public interface ClinicRepo extends JpaRepository<Clinic, Integer> {}
+public interface ClinicRepo extends JpaRepository<Clinic, Integer> {
+
+    Clinic findByCode(String code);
+}

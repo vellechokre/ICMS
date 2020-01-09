@@ -10,9 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 /**
  * Project clinic-management-service
  *
- * @author nishant.bhardwaz
- * @version 1.0
- * @date Sep 2, 2019
+ *te Sep 2, 2019
  */
 @MappedSuperclass
 @EntityListeners(value = {AuditingEntityListener.class})

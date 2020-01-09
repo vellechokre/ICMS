@@ -3,6 +3,7 @@ package com.vellechokre.entity.master;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -24,7 +25,7 @@ import com.vellechokre.entity.base.BaseObjectWithId;
 @Entity(name = EntityContant.SPECIALITY)
 public class Speciality extends BaseObjectWithId {
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "speciality_branch", joinColumns = {@JoinColumn(name = "speciality_id")},
                inverseJoinColumns = {@JoinColumn(name = "branch_id")})
     private Set<Branch> branchs = new HashSet<>();

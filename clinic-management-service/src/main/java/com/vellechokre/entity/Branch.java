@@ -31,11 +31,11 @@ public class Branch extends BaseObjectWithId {
 
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = true)
+    @OneToOne(optional = true)
     @JoinColumn(name = "address_id", nullable = true)
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "clinic_details_t_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Clinic clinic;
@@ -44,8 +44,8 @@ public class Branch extends BaseObjectWithId {
                 mappedBy = "branchs")
     private Set<LoginUser> users = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-                mappedBy = "branchs")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "branchs",
+                cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Speciality> specialities = new HashSet<>();
 
     /**

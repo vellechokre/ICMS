@@ -20,7 +20,7 @@ import com.vellechokre.entity.EntityContant;
 @Entity(name = EntityContant.STATE)
 public class State extends AbstractLocation {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "country_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Country country;

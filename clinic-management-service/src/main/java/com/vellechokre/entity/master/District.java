@@ -10,8 +10,8 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.vellechokre.entity.EntityContant;
 
-/**
- * Project clinic-management-service
+/***
+ * Project clinic-management-service**
  *
  * @author nishant.bhardwaz
  * @version 1.0
@@ -20,12 +20,12 @@ import com.vellechokre.entity.EntityContant;
 @Entity(name = EntityContant.DISTRICT)
 public class District extends AbstractLocation {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "country_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Country country;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "state_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private State state;

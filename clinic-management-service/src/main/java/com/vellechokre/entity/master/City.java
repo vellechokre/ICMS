@@ -20,21 +20,20 @@ import com.vellechokre.entity.EntityContant;
 @Entity(name = EntityContant.CITY)
 public class City extends AbstractLocation {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "country_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Country country;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "state_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private State state;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "district_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private District district;
-
+    // @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    // @JoinColumn(name = "district_id", nullable = false)
+    // @OnDelete(action = OnDeleteAction.CASCADE)
+    // private District district;
     /**
      * @return the country
      */
@@ -66,20 +65,19 @@ public class City extends AbstractLocation {
 
         this.state = state;
     }
-
-    /**
-     * @return the district
-     */
-    public District getDistrict() {
-
-        return district;
-    }
-
-    /**
-     * @param district the district to set
-     */
-    public void setDistrict(District district) {
-
-        this.district = district;
-    }
+    // /**
+    // * @return the district
+    // */
+    // public District getDistrict() {
+    //
+    // return district;
+    // }
+    //
+    // /**
+    // * @param district the district to set
+    // */
+    // public void setDistrict(District district) {
+    //
+    // this.district = district;
+    // }
 }

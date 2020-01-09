@@ -52,7 +52,7 @@ public class PatientServiceImpl implements PatientService {
         final String response = validateSave(patientData);
         if (response.equals("SUCCESS")) {
             final Patient patientDetail = patientRepo.save(patientData.getPatientDetail());
-            final Address addressDetail = patientData.getAddressDetail();
+            final Address addressDetail = null;// patientData.getAddressDetail();
             if (null != addressDetail) {
                 addressDetail.setPatient(patientDetail);
                 addressRepo.save(addressDetail);
@@ -120,8 +120,7 @@ public class PatientServiceImpl implements PatientService {
                 appointmentRepo.save(appointmentDetail);
             }
             final Address addressDetail = patientData.getAddressDetail();
-            final Address address =
-                    addressRepo.findByPatientId(patientDetailUpdated.getId());
+            final Address address = addressRepo.findByPatientId(patientDetailUpdated.getId());
             if (null != addressDetail) {
                 if (null != address) {
                     BeanUtils.copyProperties(addressDetail, address);

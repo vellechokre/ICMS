@@ -20,7 +20,7 @@ import com.vellechokre.entity.base.BaseObject;
 public class AbstractLocation extends BaseObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String geonameId;

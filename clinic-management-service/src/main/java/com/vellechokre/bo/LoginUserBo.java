@@ -9,10 +9,12 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-import com.vellechokre.entity.Branch;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.vellechokre.entity.Clinic;
 import com.vellechokre.entity.master.LoginAuthority;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginUserBo extends User {
 
     private static final long serialVersionUID = 1L;
@@ -35,7 +37,7 @@ public class LoginUserBo extends User {
     }
 
     public LoginUserBo(String username, String password, long id, Clinic clinic,
-                       Set<Branch> branchs, List<LoginAuthority> loginAuthorities,
+                       Set<BranchBo> branchs, List<LoginAuthority> loginAuthorities,
                        Date activeTill) {
 
         super(username, password, loginAuthorities);
@@ -52,11 +54,12 @@ public class LoginUserBo extends User {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     private Clinic clinic;
 
-    private Set<Branch> branchs = new HashSet<>();
+    private Set<BranchBo> branchs = new HashSet<>();
 
     private List<LoginAuthority> loginAuthorities;
 
@@ -131,7 +134,7 @@ public class LoginUserBo extends User {
     /**
      * @return the branchs
      */
-    public Set<Branch> getBranchs() {
+    public Set<BranchBo> getBranchs() {
 
         return branchs;
     }
@@ -139,7 +142,7 @@ public class LoginUserBo extends User {
     /**
      * @param branchs the branchs to set
      */
-    public void setBranchs(Set<Branch> branchs) {
+    public void setBranchs(Set<BranchBo> branchs) {
 
         this.branchs = branchs;
     }

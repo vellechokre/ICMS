@@ -16,4 +16,6 @@ import com.vellechokre.entity.Branch;
 public interface BranchRepo extends JpaRepository<Branch, Integer> {
 
     List<Branch> findByClinicCode(String clinicCode);
+
+    List<Branch> findByClinicId(Integer id);
 }

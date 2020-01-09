@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.springframework.util.StringUtils;
 
@@ -63,5 +64,47 @@ public class DateUtil {
             format = DATE_FORMAT;
         }
         return new SimpleDateFormat(format).parse(date);
+    }
+
+    /**
+     * Get Formated Date as String in IST time Zone
+     *
+     * @param format
+     * @return
+     * @throws ParseException
+     */
+    public static String getCurrentString(final String format) {
+
+        return stringFormatedDate(getCurrent(new Date(), ApplicationConstant.TIME_ZONE_IST),
+                format);
+    }
+
+    /**
+     * Get Date in Provided Time Zone
+     *
+     * @param date
+     * @param timeZone
+     * @return
+     */
+    public static Date getCurrent(final Date date, final String timeZone) {
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(TimeZone.getTimeZone(timeZone));
+        calendar.setTime(date);
+        return calendar.getTime();
+    }
+
+    /**
+     * Method to convert given date in given string format. <br/>
+     * In this method formated date contains special character present in format.
+     *
+     * @param date
+     * @param format
+     * @return string date
+     */
+    public static String stringFormatedDate(final Date date, final String format) {
+
+        final SimpleDateFormat simpleDF = new SimpleDateFormat(format);
+        return simpleDF.format(date);
     }
 }

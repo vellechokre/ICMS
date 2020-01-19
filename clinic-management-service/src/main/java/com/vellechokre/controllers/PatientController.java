@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vellechokre.bo.PatientData;
+import com.vellechokre.bo.SuccessResponse;
 import com.vellechokre.entity.Patient;
 import com.vellechokre.repository.PatientRepo;
 import com.vellechokre.services.PatientService;
+import com.vellechokre.util.ApplicationConstant;
+import com.vellechokre.util.ApplicationUtil;
 
 /**
  * Project clinic-management-service
@@ -84,4 +88,11 @@ public class PatientController {
     // final List<TreatmentCategory> categories = treatmentCategoryRepo.findAll();
     // return new ModelAndView("reviewLead", "categories", categories);
     // }
+
+    @GetMapping(value = "getPatientWithPendingAmount")
+    public ResponseEntity<SuccessResponse> getPatientWithPendingAmount() {
+
+        return ApplicationUtil.getResponseEntity(ApplicationConstant.DATA_FETCH_SUCCESS,
+                service.getPatientWithPendingAmount());
+    }
 }

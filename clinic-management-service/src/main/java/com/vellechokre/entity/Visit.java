@@ -3,6 +3,7 @@ package com.vellechokre.entity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import com.vellechokre.entity.base.BaseObjectWithIdAndBranchId;
 
@@ -20,8 +21,10 @@ public class Visit extends BaseObjectWithIdAndBranchId {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
+    @NotNull(message = "Category can't be null")
     private String category;
 
+    @NotNull(message = "Sub-Category can't be null")
     private String subCategory;
 
     private Integer amount;

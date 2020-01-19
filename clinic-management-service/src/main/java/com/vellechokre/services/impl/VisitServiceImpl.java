@@ -1,5 +1,6 @@
 package com.vellechokre.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import com.vellechokre.entity.Visit;
 import com.vellechokre.repository.PatientRepo;
 import com.vellechokre.repository.PaymentRepo;
 import com.vellechokre.repository.VisitRepo;
+import com.vellechokre.repository.projection.CategoryCountProjection;
 import com.vellechokre.services.VisitService;
+import com.vellechokre.util.DateUtil;
 
 /**
  * Project clinic-management-service
@@ -38,6 +41,8 @@ public class VisitServiceImpl implements VisitService {
     public void recordVisit(RecordVisit recordVisit) {
 
         if (!CollectionUtils.isEmpty(recordVisit.getVisitDetails())) {
+            recordVisit.getVisitDetails()
+                    .forEach(item -> item.setPatient(recordVisit.getPatientDetail()));
             visitRepo.saveAll(recordVisit.getVisitDetails());
         }
         if (null != recordVisit.getPaymentDetail()) {
@@ -62,5 +67,30 @@ public class VisitServiceImpl implements VisitService {
         patientDetail.setTotalAmount(netAmount);
         patientDetail.setPendingAmount(pendingAmount);
         patientRepo.save(patientDetail);
+    }
+
+    @Override
+    public long getPatientVisitedInLastWeek() {
+
+        return visitRepo.countByCreatedDateBetween(DateUtil.modifyDays(new Date(), 7, false),
+                DateUtil.getCurrentEnd());
+    }
+
+    @Override
+    public List<CategoryCountProjection> getPatientByTreatmentType() {
+
+        return visitRepo.findVisitCount();
+    }
+
+    @Override
+    public List<Visit> getVisitsByPatientId(Integer patientId) {
+
+        return visitRepo.findByPatientId(patientId);
+    }
+
+    @Override
+    public List<Visit> fetchAll() {
+
+        return visitRepo.findAll();
     }
 }

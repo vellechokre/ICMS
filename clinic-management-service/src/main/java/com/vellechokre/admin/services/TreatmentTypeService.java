@@ -19,4 +19,10 @@ public interface TreatmentTypeService {
      * @return
      */
     List<TreatmentType> fetchAll();
+
+    /**
+     * @param treatmentType
+     * @return
+     */
+    TreatmentType update(TreatmentType treatmentType);
 }

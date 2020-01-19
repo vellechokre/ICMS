@@ -33,4 +33,10 @@ public class TreatmentTypeServiceImpl implements TreatmentTypeService {
 
         return repo.findAll();
     }
+
+    @Override
+    public TreatmentType update(TreatmentType treatmentType) {
+
+        return repo.save(treatmentType);
+    }
 }

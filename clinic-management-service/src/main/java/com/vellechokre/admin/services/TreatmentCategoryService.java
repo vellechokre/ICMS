@@ -20,4 +20,15 @@ public interface TreatmentCategoryService {
      * @return
      */
     List<TreatmentCategory> fetchByTreatmentType(Integer treatmentTypeId);
+
+    /**
+     * @param treatmentCategory
+     * @return
+     */
+    TreatmentCategory update(TreatmentCategory treatmentCategory);
+
+    /**
+     * @return
+     */
+    List<TreatmentCategory> fetchAll();
 }

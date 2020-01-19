@@ -1,5 +1,6 @@
 package com.vellechokre.services.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
@@ -12,6 +13,7 @@ import org.springframework.util.StringUtils;
 import com.vellechokre.bo.ErrorResponse;
 import com.vellechokre.bo.PatientData;
 import com.vellechokre.bo.SuccessResponse;
+import com.vellechokre.config.ApplicationContext;
 import com.vellechokre.entity.Address;
 import com.vellechokre.entity.Appointment;
 import com.vellechokre.entity.Patient;
@@ -153,5 +155,17 @@ public class PatientServiceImpl implements PatientService {
         patientData.setAppointmentDetail(appointmentRepo.findByPatientIdAndIsActiveTrue(id));
         patientData.setPatientDetail(patientRepo.findById(id).get());
         return patientData;
+    }
+
+    @Override
+    public List<Patient> getPatientWithPendingAmount() {
+
+        return patientRepo.findByPendingAmountGreaterThanAndBranchId(0, ApplicationContext.getId());
+    }
+
+    @Override
+    public long getTotalPatientVisited() {
+
+        return patientRepo.count();
     }
 }

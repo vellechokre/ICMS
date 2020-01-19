@@ -33,4 +33,16 @@ public class TreatmentCategoryServiceImpl implements TreatmentCategoryService {
 
         return repo.findByTreatmentTypeId(treatmentTypeId);
     }
+
+    @Override
+    public TreatmentCategory update(TreatmentCategory treatmentCategory) {
+
+        return repo.save(treatmentCategory);
+    }
+
+    @Override
+    public List<TreatmentCategory> fetchAll() {
+
+        return repo.findAll();
+    }
 }

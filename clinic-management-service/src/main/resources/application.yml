@@ -5,9 +5,9 @@ spring:
             minimum-idle: 1
             maximum-pool-size: 5
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://18.219.190.56:3306/icms?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
-        username: icms
-        password: icms
+        url: jdbc:mysql://52.14.209.49:3306/icms?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+        username: vellechokre
+        password: vellechokre
         initialization-mode: always
     jpa:
       hibernate:
